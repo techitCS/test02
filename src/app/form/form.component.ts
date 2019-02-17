@@ -7,17 +7,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  fromGroup:FormGroup;
+  formGroup:FormGroup;
 
   constructor(private formBuild:FormBuilder) { 
     
   }
 
   ngOnInit() {
-    this.fromGroup = this.formBuild.group({
+    this.formGroup = this.formBuild.group({
       firstName:[''],
       lastName:['']
     })
+  }
+  onSubmit(form: FormGroup){
+    console.log(form);
   }
 
 }
