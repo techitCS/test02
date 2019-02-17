@@ -1,16 +1,23 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)">
   <div>
     <input type="text"formControlName= "firstName" placeholder="first name">
-    
+    <label style="color:tomato" *ngIf="formGroup.get('firstName').invalid && formGroup.get('firstName').touched && formGroup.get('firstName').errors['required']" >required.</label>
+    <label style="color:tomato" *ngIf="formGroup.get('firstName').invalid && formGroup.get('firstName').touched && formGroup.get('firstName').errors['minlength']" >min is 3.</label>
   </div>
   <div>
     <input type="text"formControlName= "lastName" placeholder="lastName">
+    <label style="color:tomato" *ngIf="formGroup.get('lastName').invalid && formGroup.get('lastName').touched && formGroup.get('lastName').errors['required']" >required.</label>
+    <label style="color:tomato" *ngIf="formGroup.get('lastName').invalid && formGroup.get('lastName').touched && formGroup.get('lastName').errors['minlength']" >min is 3.</label>
   </div>
   <div>
     <input type="text"formControlName = "Email" placeholder="Email">
+    <label style="color:tomato" *ngIf="formGroup.get('Email').invalid && formGroup.get('Email').touched && formGroup.get('Email').errors['Email']" >email is invalid.</label>
+    
   </div>
   <div>
-      <input type="number" min="0" max="99" formControlName = "age" placeholder="Age">
+      <input type="number" min="0" max="99" formControlName = "age" placeholder="age">
+      <label style="color:tomato" *ngIf="formGroup.get('age').invalid && formGroup.get('age').touched &&( formGroup.get('age').errors['min']||formGroup.get('age').errors['max'])" >0-99.</label>
+      
     </div>
   <div>
       <button >Click </button>
