@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { User } from '../user';
+
 
 @Component({
   selector: 'app-form',
@@ -9,6 +10,7 @@ import { User } from '../user';
 })
 export class FormComponent implements OnInit {
   formGroup:FormGroup;
+  @Output() change = new EventEmitter();
 
   constructor(private formBuild:FormBuilder) { 
     
@@ -38,12 +40,13 @@ export class FormComponent implements OnInit {
     console.log((<FormControl>form.get('lastName')).errors)
     console.log((<FormControl>form.get('Email')).errors)
     console.log((<FormControl>form.get('age')).errors)
-    if(form.invalid){
-      /*const{firstName,lastName,Email,age} = form.value;
+    if(form.valid){
+      const{firstName,lastName,Email,age} = form.value;
       console.log(firstName,lastName,Email);
       const user = new User(firstName,lastName,Email,age);
       console.log(user);
-      */
+    
+      
     }else{
       ['firstName','lastName','age','email'].forEach((key:string)=>{
         console.log(form.get(key).touched);
